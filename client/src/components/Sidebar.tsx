@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 import { type Category } from "@shared/schema";
 import { cn } from "@/lib/utils";
-import { LayoutGrid, Headphones, Lightbulb, Video, Ticket } from "lucide-react";
+import { LayoutGrid, Headphones, Lightbulb, Video, Ticket, X } from "lucide-react";
 
 const categoryIcons = {
   audio: Headphones,
@@ -12,17 +12,25 @@ const categoryIcons = {
   "production-video": Video,
 };
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const [location] = useLocation();
-  
+
   const { data: categories, isLoading } = useQuery<Category[]>({
     queryKey: ["/api/categories"],
   });
 
+  const handleNavigate = () => {
+    if (onClose) onClose();
+  };
+
   if (isLoading) {
     return (
-      <div className="w-64 border-r h-screen p-4">
-        <div className="space-y-2">
+      <div className="w-full h-full bg-background border-r">
+        <div className="p-4 space-y-2">
           {[1, 2, 3].map((i) => (
             <div key={i} className="h-10 bg-muted animate-pulse rounded" />
           ))}
@@ -32,10 +40,18 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="w-64 border-r h-screen">
+    <div className="w-full h-full bg-background border-r">
+      {onClose && (
+        <div className="flex justify-end p-2 md:hidden">
+          <Button variant="ghost" size="icon" onClick={onClose}>
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+      )}
+
       <ScrollArea className="h-full">
         <div className="p-4 space-y-4">
-          <Link href="/">
+          <Link href="/" onClick={handleNavigate}>
             <Button
               variant="ghost"
               className={cn("w-full justify-start", {
@@ -51,7 +67,11 @@ export default function Sidebar() {
             {categories?.map((category) => {
               const Icon = categoryIcons[category.slug as keyof typeof categoryIcons];
               return (
-                <Link key={category.id} href={`/category/${category.slug}`}>
+                <Link 
+                  key={category.id} 
+                  href={`/category/${category.slug}`}
+                  onClick={handleNavigate}
+                >
                   <Button
                     variant="ghost"
                     className={cn("w-full justify-start", {
@@ -67,7 +87,7 @@ export default function Sidebar() {
           </div>
 
           <div className="pt-4 border-t">
-            <Link href="/support">
+            <Link href="/support" onClick={handleNavigate}>
               <Button
                 variant="ghost"
                 className={cn("w-full justify-start", {
