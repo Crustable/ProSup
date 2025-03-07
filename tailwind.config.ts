@@ -8,14 +8,21 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        blue: {
+          50: '#f0f6ff',
+          100: '#e0edff',
+          200: '#bad9ff',
+          300: '#7cb3ff',
+          400: '#3b82f6',
+          500: '#0052cc',
+          600: '#0040a3',
+          700: '#003380',
+          800: '#002966',
+          900: '#001a40',
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -54,15 +61,15 @@ export default {
             maxWidth: 'none',
             color: 'hsl(var(--foreground))',
             h1: {
-              color: 'hsl(var(--foreground))',
+              color: '#0052cc',
               fontWeight: '700',
             },
             h2: {
-              color: 'hsl(var(--foreground))',
+              color: '#0052cc',
               fontWeight: '600',
             },
             h3: {
-              color: 'hsl(var(--foreground))',
+              color: '#0052cc',
               fontWeight: '600',
             },
           },
