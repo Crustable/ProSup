@@ -9,12 +9,43 @@ import ArticlePage from "@/pages/article";
 import Support from "@/pages/support";
 import AdminTickets from "@/pages/admin/tickets";
 import NotFound from "@/pages/not-found";
+import { useState } from "react";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 function Layout({ children }: { children: React.ReactNode }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex h-screen">
-      <Sidebar />
-      <main className="flex-1 overflow-y-auto p-8">
+      {/* Mobile menu button */}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="fixed top-4 left-4 z-50 md:hidden"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        <Menu className="h-6 w-6" />
+      </Button>
+
+      {/* Sidebar with mobile overlay */}
+      <div
+        className={`fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden ${
+          sidebarOpen ? "block" : "hidden"
+        }`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
+      <div
+        className={`fixed md:static w-64 z-50 h-screen transition-transform duration-200 ease-in-out md:translate-x-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <Sidebar onClose={() => setSidebarOpen(false)} />
+      </div>
+
+      <main className="flex-1 overflow-y-auto p-4 md:p-8 md:ml-0 w-full">
+        <div className="md:hidden h-12" /> {/* Spacer for mobile menu button */}
         {children}
       </main>
     </div>
