@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} - Documentation Portal{% endblock %}
+
+{% block header %}{{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <p class="mb-4">{{ category.description }}</p>
+    
+    <div class="card">
+        <h2>Articles</h2>
+        
+        {% if articles %}
+            <ul class="nav-list">
+                {% for article in articles %}
+                <li class="nav-item">
+                    <a href="/article/{{ article.slug }}" class="nav-link">
+                        <i data-feather="file-text" style="margin-right: 0.5rem;"></i>
+                        {{ article.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No articles found in this category.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
