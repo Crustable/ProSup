@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>{% block title %}Documentation Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="flex items-center justify-between mb-4">
+            <h2>Documentation</h2>
+            <button class="mobile-menu-toggle" id="close-sidebar">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                        <i data-feather="grid" class="mr-2"></i> Dashboard
+                    </a>
+                </li>
+                
+                {% if categories %}
+                    {% for category in categories %}
+                    <li class="nav-item">
+                        <a href="/category/{{ category.slug }}" class="nav-link {% if request.path == '/category/' + category.slug %}active{% endif %}">
+                            {% if category.slug == 'audio' %}
+                                <i data-feather="headphones" class="mr-2"></i>
+                            {% elif category.slug == 'lighting' %}
+                                <i data-feather="zap" class="mr-2"></i>
+                            {% elif category.slug == 'production-video' %}
+                                <i data-feather="video" class="mr-2"></i>
+                            {% else %}
+                                <i data-feather="file-text" class="mr-2"></i>
+                            {% endif %}
+                            {{ category.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                {% endif %}
+                
+                <li class="nav-item mt-4">
+                    <a href="/support" class="nav-link {% if request.path == '/support' %}active{% endif %}">
+                        <i data-feather="help-circle" class="mr-2"></i> Support
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/admin/tickets" class="nav-link {% if request.path == '/admin/tickets' %}active{% endif %}">
+                        <i data-feather="inbox" class="mr-2"></i> Tickets
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="flex items-center justify-between mb-4">
+            <button class="mobile-menu-toggle" id="open-sidebar">
+                <i data-feather="menu"></i>
+            </button>
+            <h1>{% block header %}{% endblock %}</h1>
+        </div>
+        
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script>
+        // Initialize Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            
+            // Mobile menu toggle
+            const sidebar = document.getElementById('sidebar');
+            const openSidebar = document.getElementById('open-sidebar');
+            const closeSidebar = document.getElementById('close-sidebar');
+            
+            if (openSidebar) {
+                openSidebar.addEventListener('click', function() {
+                    sidebar.classList.add('open');
+                });
+            }
+            
+            if (closeSidebar) {
+                closeSidebar.addEventListener('click', function() {
+                    sidebar.classList.remove('open');
+                });
+            }
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

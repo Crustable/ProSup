@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Documentation Portal{% endblock %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+{% endblock %}
+
+{% block header %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-4">
+        <a href="/category/{{ article.category_slug }}" class="button button-secondary">
+            <i data-feather="arrow-left" style="width: 14px; height: 14px; margin-right: 4px;"></i>
+            Back to {{ article.category_name }}
+        </a>
+    </div>
+    
+    <div class="card">
+        <div class="prose" id="article-content">
+            {{ article.content | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // If content is markdown, render it
+        const articleContent = document.getElementById('article-content');
+        if (articleContent) {
+            // Check if content looks like markdown
+            const content = articleContent.innerHTML.trim();
+            if (content.includes('#') || content.includes('*') || content.includes('```')) {
+                articleContent.innerHTML = marked.parse(content);
+            }
+        }
+    });
+</script>
+{% endblock %}
