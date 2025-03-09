@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block title %}Error - Documentation Portal{% endblock %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding-top: 3rem;">
+    <div class="card">
+        <div style="display: flex; justify-content: center; margin-bottom: 1rem;">
+            <i data-feather="alert-triangle" style="width: 48px; height: 48px; color: #ef4444;"></i>
+        </div>
+        <h1>Server Error</h1>
+        <p>An unexpected error occurred.</p>
+        {% if error %}
+        <div style="margin: 1rem 0; padding: 0.75rem; background-color: #fee2e2; border-radius: 0.25rem;">
+            {{ error }}
+        </div>
+        {% endif %}
+        <div style="margin-top: 2rem;">
+            <a href="/" class="button">Return to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

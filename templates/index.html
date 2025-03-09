@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}Documentation Portal - Home{% endblock %}
+
+{% block header %}Technical Documentation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <p class="mb-4">Find guides and documentation for audio, lighting, and video production.</p>
+    
+    <div class="row">
+        {% for category in categories %}
+        <div class="col" style="flex-basis: 33.333%; min-width: 300px; margin-bottom: 1rem;">
+            <div class="card">
+                <div class="flex items-center mb-2">
+                    {% if category.slug == 'audio' %}
+                        <i data-feather="headphones" style="margin-right: 0.5rem;"></i>
+                    {% elif category.slug == 'lighting' %}
+                        <i data-feather="zap" style="margin-right: 0.5rem;"></i>
+                    {% elif category.slug == 'production-video' %}
+                        <i data-feather="video" style="margin-right: 0.5rem;"></i>
+                    {% else %}
+                        <i data-feather="file-text" style="margin-right: 0.5rem;"></i>
+                    {% endif %}
+                    <h3 class="mb-0">{{ category.name }}</h3>
+                </div>
+                
+                <p>{{ category.description }}</p>
+                <a href="/category/{{ category.slug }}" class="button">Browse Articles</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

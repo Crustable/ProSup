@@ -1,0 +1,133 @@
+
+{% extends "base.html" %}
+
+{% block title %}Admin Tickets - Documentation Portal{% endblock %}
+
+{% block header %}Support Tickets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h2>All Tickets</h2>
+        
+        {% if tickets %}
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">ID</th>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">Email</th>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">Subject</th>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">Status</th>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">Created</th>
+                            <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid var(--color-border);">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in tickets %}
+                        <tr>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">{{ ticket.id }}</td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">{{ ticket.email }}</td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">{{ ticket.subject }}</td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">
+                                <span class="badge 
+                                    {% if ticket.status == 'open' %}badge-yellow
+                                    {% elif ticket.status == 'in progress' %}badge-blue
+                                    {% elif ticket.status == 'resolved' %}badge-green
+                                    {% else %}badge-red{% endif %}">
+                                    {{ ticket.status }}
+                                </span>
+                            </td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">
+                                {{ ticket.created_at.strftime('%Y-%m-%d %H:%M') if ticket.created_at else 'N/A' }}
+                            </td>
+                            <td style="padding: 0.5rem; border-bottom: 1px solid var(--color-border);">
+                                <div>
+                                    <button class="view-ticket button button-secondary" data-ticket-id="{{ ticket.id }}" style="padding: 0.25rem 0.5rem; margin-right: 0.5rem;">
+                                        View
+                                    </button>
+                                    <select class="status-select" data-ticket-id="{{ ticket.id }}" style="padding: 0.25rem; border-radius: 0.25rem;">
+                                        <option value="open" {% if ticket.status == 'open' %}selected{% endif %}>Open</option>
+                                        <option value="in progress" {% if ticket.status == 'in progress' %}selected{% endif %}>In Progress</option>
+                                        <option value="resolved" {% if ticket.status == 'resolved' %}selected{% endif %}>Resolved</option>
+                                        <option value="closed" {% if ticket.status == 'closed' %}selected{% endif %}>Closed</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="ticket-details-{{ ticket.id }}" style="display: none;">
+                            <td colspan="6" style="padding: 1rem; background-color: #f9fafb;">
+                                <h4>Message:</h4>
+                                <p style="white-space: pre-wrap;">{{ ticket.message }}</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No tickets found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // View ticket details
+        const viewButtons = document.querySelectorAll('.view-ticket');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const ticketId = this.getAttribute('data-ticket-id');
+                const detailsRow = document.getElementById(`ticket-details-${ticketId}`);
+                
+                if (detailsRow.style.display === 'none') {
+                    detailsRow.style.display = 'table-row';
+                    this.textContent = 'Hide';
+                } else {
+                    detailsRow.style.display = 'none';
+                    this.textContent = 'View';
+                }
+            });
+        });
+        
+        // Update ticket status
+        const statusSelects = document.querySelectorAll('.status-select');
+        statusSelects.forEach(select => {
+            select.addEventListener('change', async function() {
+                const ticketId = this.getAttribute('data-ticket-id');
+                const newStatus = this.value;
+                
+                try {
+                    const response = await fetch(`/api/tickets/${ticketId}/status`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            status: newStatus
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        // Flash the select to indicate success
+                        this.style.backgroundColor = '#d1fae5';
+                        setTimeout(() => {
+                            this.style.backgroundColor = '';
+                        }, 1000);
+                    } else {
+                        this.style.backgroundColor = '#fee2e2';
+                        setTimeout(() => {
+                            this.style.backgroundColor = '';
+                        }, 1000);
+                        console.error('Failed to update ticket status');
+                    }
+                } catch (error) {
+                    console.error('Error updating ticket status:', error);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
