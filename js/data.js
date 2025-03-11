@@ -1,4 +1,3 @@
-
 // Data handling module for Documentation Portal
 // Uses localStorage to store and retrieve data
 
@@ -113,7 +112,7 @@ const DataStore = {
       status: 'open',
       createdAt: new Date().toISOString()
     };
-    
+
     tickets.push(newTicket);
     localStorage.setItem('tickets', JSON.stringify(tickets));
     return newTicket;
@@ -122,16 +121,21 @@ const DataStore = {
   updateTicketStatus: function(id, status) {
     const tickets = this.getTickets();
     const ticketIndex = tickets.findIndex(t => t.id === id);
-    
+
     if (ticketIndex !== -1) {
       tickets[ticketIndex].status = status;
       localStorage.setItem('tickets', JSON.stringify(tickets));
       return tickets[ticketIndex];
     }
-    
+
     return null;
   }
 };
+
+// Navigation function for back button
+function goBack() {
+    window.history.back();
+}
 
 // Initialize the data store
 DataStore.init();
