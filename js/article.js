@@ -1,3 +1,4 @@
+
 // Article page JavaScript for Documentation Portal
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,9 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('article-title').textContent = article.title;
     document.getElementById('article-title-header').textContent = article.title;
 
+    // Get article content
+    let content = article.content;
+    
+    // For articles that are not MXBus, remove any MXBus-specific image references
+    if (slug !== 'mxbus-app-guide') {
+        // Remove any MXBus-specific image references or setup instructions
+        content = content.replace(/<div class="setup-steps">[\s\S]*?<\/div>/g, '');
+        content = content.replace(/<div class="setup-step">[\s\S]*?<\/div>/g, '');
+        content = content.replace(/<div class="mxbus-setup">[\s\S]*?<\/div>/g, '');
+        content = content.replace(/<div class="app-download">[\s\S]*?<\/div>/g, '');
+        content = content.replace(/<h2>MXBus Setup Steps<\/h2>/g, '');
+        content = content.replace(/<h3>Download from App Store<\/h3>/g, '');
+    }
+
     // Get article content and populate it
     const articleContentElement = document.getElementById('article-content');
-    articleContentElement.innerHTML = article.content;
+    articleContentElement.innerHTML = content;
 
     // Check if this is the MXBus app guide and add setup images only if it is
     if (slug === 'mxbus-app-guide') {

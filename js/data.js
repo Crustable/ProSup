@@ -60,6 +60,13 @@ const DataStore = {
           title: 'Video Production Planning',
           slug: 'video-production-planning',
           content: '<h2>Video Production Planning</h2><p>Successful video production starts with thorough planning and pre-production.</p><h3>Key Planning Elements</h3><ol><li><strong>Script Development:</strong> Creating a detailed script that outlines dialogue, action, and transitions.</li><li><strong>Storyboarding:</strong> Visual representation of each shot in sequence.</li><li><strong>Shot List:</strong> Detailed list of every shot needed for production.</li><li><strong>Location Scouting:</strong> Finding and securing appropriate filming locations.</li><li><strong>Equipment List:</strong> Determining the cameras, lighting, and audio equipment needed.</li></ol><p>Comprehensive planning saves time and resources during the production phase and leads to a more polished final product.</p>'
+        },
+        {
+          id: 5,
+          categoryId: 1,
+          title: 'MXBus App Guide',
+          slug: 'mxbus-app-guide',
+          content: '<h2>MXBus App Guide</h2><p>The MXBus app allows you to control your audio system from your mobile device. This guide will help you get started with the MXBus app.</p><h3>Features</h3><ul><li>Wireless control of your audio system</li><li>Real-time monitoring of audio levels</li><li>Save and load presets</li><li>Adjust EQ and effects</li></ul><p>For more information, visit the <a href="https://www.mxbus.com" target="_blank">MXBus website</a>.</p>'
         }
       ];
       localStorage.setItem('articles', JSON.stringify(sampleArticles));
