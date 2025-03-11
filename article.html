@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Documentation Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Documentation Portal</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="support.html">Support</a>
+                    <a href="admin/tickets.html">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a> &gt; 
+            <a id="category-link" href="#">Category</a> &gt; 
+            <span id="article-title">Article</span>
+        </div>
+        
+        <div class="article-container">
+            <h1 id="article-title-header">Article Title</h1>
+            <div id="article-content" class="article-content">
+                <!-- Article content will be loaded here dynamically -->
+                <div class="loading">Loading article...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Documentation Portal</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/article.js"></script>
+</body>
+</html>
