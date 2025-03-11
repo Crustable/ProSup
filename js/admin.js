@@ -1,6 +1,11 @@
 
 // Admin page JavaScript for Documentation Portal
 
+// Function to go back to previous page
+function goBack() {
+    window.history.back();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Load and display tickets
   loadTickets();

@@ -1,6 +1,11 @@
 
 // Category page JavaScript for Documentation Portal
 
+// Function to go back to previous page
+function goBack() {
+    window.history.back();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Get the category slug from the URL
   const params = new URLSearchParams(window.location.search);

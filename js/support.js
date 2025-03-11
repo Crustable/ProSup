@@ -1,6 +1,11 @@
 
 // Support page JavaScript for Documentation Portal
 
+// Function to go back to previous page
+function goBack() {
+    window.history.back();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Set up support form submission
   const supportForm = document.getElementById('support-form');
