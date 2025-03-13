@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         mxbusSetupDiv.className = 'mxbus-setup';
         mxbusSetupDiv.innerHTML = `
             <h2>MXBus Setup Steps</h2>
+            <div class="app-download">
+                <h3>Download from App Store</h3>
+                <a href="https://apps.apple.com/us/app/mxbus/id1530411157" target="_blank" class="button">Download MXBus App</a>
+            </div>
             <div class="setup-steps">
                 <div class="setup-step">
                     <div class="setup-icon">📱</div>
@@ -64,13 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="setup-icon">🔄</div>
                     <div class="setup-info">
                         <h3>Network Configuration</h3>
-                        <p>Connect to the same network as your audio system</p>
+                        <p>Connect to the same wifi as the audio system</p>
                     </div>
                 </div>
-            </div>
-            <div class="app-download">
-                <h3>Download from App Store</h3>
-                <a href="https://apps.apple.com/us/app/mxbus/id1530411157" target="_blank" class="button">Download MXBus App</a>
             </div>
         `;
 
