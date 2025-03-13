@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
         mxbusSetupDiv.innerHTML = `
             <h2>MXBus Setup Steps</h2>
             <div class="app-download">
-                <h3>Download from App Store</h3>
-                <a href="https://apps.apple.com/us/app/mxbus/id1530411157" target="_blank" class="button">Download MXBus App</a>
+                <div class="app-download">
+                    <h3>Download from App Store</h3>
+                    <a href="https://apps.apple.com/us/app/mxbus/id1530411157" target="_blank" class="button">Download MXBus App</a>
+                </div>
             </div>
             <div class="setup-steps">
                 <div class="setup-step">
