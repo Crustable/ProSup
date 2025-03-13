@@ -374,12 +374,16 @@ footer {
   
   .navbar {
     flex-direction: column;
+    align-items: center;
     height: auto;
     padding: 1rem 0;
   }
   
   .nav-links {
     margin-top: 1rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   
   body {
@@ -414,6 +418,7 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin: 5px 0; /* Add margin between links */
   }
   
   /* Improve form experience on mobile */
