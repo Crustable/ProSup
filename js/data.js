@@ -66,7 +66,7 @@ const DataStore = {
           categoryId: 1,
           title: 'MXBus App Guide',
           slug: 'mxbus-app-guide',
-          content: '<h2>MXBus App Guide</h2><p>The MXBus app allows you to control your audio system from your mobile device. This guide will help you get started with the MXBus app.</p><h3>Features</h3><ul><li>Wireless control of your audio system</li><li>Real-time monitoring of audio levels</li><li>Save and load presets</li><li>Adjust EQ and effects</li></ul><p>For more information, visit the <a href="https://www.mxbus.com" target="_blank">MXBus website</a>.</p>'
+          content: '<h2>MXBus App Guide</h2><p>The MXBus app allows you to control your In-Ear Monitors from your mobile device. This guide will help you get started with the MXBus app.</p><h3>Features</h3><ul><li>Wireless control of your In-Ear Monitors</li><li>Real-time monitoring of audio levels</li></ul><p>For more information, visit the <a href="https://www.keldenich.net/en/MXBus/" target="_blank">MXBus website</a>.</p>'
         }
       ];
       localStorage.setItem('articles', JSON.stringify(sampleArticles));
