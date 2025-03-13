@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# ProSup
-=======
 
 # Documentation Portal
 
@@ -21,14 +18,12 @@ A static HTML/JavaScript documentation portal that can be hosted on GitHub Pages
 2. Open `index.html` in your browser
 3. All data is stored in your browser's localStorage
 
-## Deployment
+## Deployment on GitHub Pages
 
-This project can be deployed to any static hosting service, including:
-
-- GitHub Pages
-- Netlify
-- Vercel
-- Replit
+1. Push this repository to GitHub
+2. Go to repository Settings > Pages
+3. Select the main branch as source
+4. Your site will be available at https://yourusername.github.io/repository-name/
 
 ## Structure
 
@@ -50,4 +45,3 @@ This project can be deployed to any static hosting service, including:
 ## License
 
 MIT
->>>>>>> d0c1b7c (Assistant checkpoint: Rewrite app as client-side HTML/JS for GitHub hosting)
