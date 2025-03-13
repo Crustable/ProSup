@@ -170,6 +170,28 @@ a:hover {
   text-decoration: none;
 }
 
+.theme-toggle {
+  margin-top: 1.5rem;
+}
+
+.theme-toggle button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode .nav-link:hover, .dark-mode .nav-link.active {
+  background-color: #333;
+}
+
+.dark-mode #theme-toggle-icon {
+  transform: rotate(180deg);
+}
+
 /* Form elements */
 .form-group {
   margin-bottom: 1rem;
