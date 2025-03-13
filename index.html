@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Documentation Portal</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="support.html">Support</a>
+                    <a href="admin/tickets.html">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="content-header">
+            <h1>Technical Documentation</h1>
+            <p>Find guides and documentation for audio, lighting, and video production.</p>
+        </div>
+        
+        <div id="categories-container" class="card-grid">
+            <!-- Categories will be loaded here dynamically -->
+            <div class="loading">Loading categories...</div>
+        </div>
+    </main>
+<!--
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Documentation Portal</p>
+        </div>
+    </footer>
+-->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

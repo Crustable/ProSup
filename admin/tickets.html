@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Tickets - Documentation Portal</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">Documentation Portal</a>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../support.html">Support</a>
+                    <a href="tickets.html">Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <button class="back-button" onclick="goBack()">Back</button>
+        <div class="card">
+            <h2>Support Tickets</h2>
+            <div id="tickets-container">
+                <table class="tickets-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tickets-list">
+                        <!-- Tickets will be loaded here dynamically -->
+                    </tbody>
+                </table>
+                <div id="no-tickets" style="display: none;">No tickets found.</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Documentation Portal</p>
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
