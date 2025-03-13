@@ -378,4 +378,77 @@ footer {
   .nav-links {
     margin-top: 1rem;
   }
+  
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .category-card, .article-card {
+    padding: 1rem;
+  }
+  
+  .article-container {
+    padding: 1rem;
+  }
+  
+  /* Better tap targets */
+  .nav-links a,
+  button,
+  .button,
+  .back-button {
+    padding: 0.75rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Improve form experience on mobile */
+  .form-input, 
+  .form-textarea {
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+  
+  /* Fix table display on small screens */
+  .tickets-table {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+  
+  /* Adjust header for mobile */
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Add specific mobile landscape styles */
+@media (max-width: 896px) and (orientation: landscape) {
+  .sidebar {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .main-content {
+    padding-bottom: 2rem;
+  }
 }

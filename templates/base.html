@@ -3,10 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=1, user-scalable=yes">
+    <meta name="theme-color" content="#0066cc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>{% block title %}Documentation Portal{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icon-192.png') }}">
     <script src="https://unpkg.com/feather-icons"></script>
     {% block head %}{% endblock %}
 </head>
@@ -82,22 +87,46 @@
         document.addEventListener('DOMContentLoaded', function() {
             feather.replace();
             
-            // Mobile menu toggle
+            // Mobile menu toggle with improved touch handling
             const sidebar = document.getElementById('sidebar');
             const openSidebar = document.getElementById('open-sidebar');
             const closeSidebar = document.getElementById('close-sidebar');
+            const body = document.body;
+            
+            function openMobileMenu() {
+                sidebar.classList.add('open');
+                body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+            }
+            
+            function closeMobileMenu() {
+                sidebar.classList.remove('open');
+                body.style.overflow = ''; // Restore scrolling
+            }
             
             if (openSidebar) {
-                openSidebar.addEventListener('click', function() {
-                    sidebar.classList.add('open');
+                openSidebar.addEventListener('click', openMobileMenu);
+                openSidebar.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    openMobileMenu();
                 });
             }
             
             if (closeSidebar) {
-                closeSidebar.addEventListener('click', function() {
-                    sidebar.classList.remove('open');
+                closeSidebar.addEventListener('click', closeMobileMenu);
+                closeSidebar.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    closeMobileMenu();
                 });
             }
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (sidebar.classList.contains('open') && 
+                    !sidebar.contains(e.target) && 
+                    e.target !== openSidebar) {
+                    closeMobileMenu();
+                }
+            });
             
             // Dark mode toggle
             const themeToggle = document.getElementById('theme-toggle');
