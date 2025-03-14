@@ -1,4 +1,3 @@
-
 // Article page JavaScript for Documentation Portal
 
 // Function to go back to previous page
@@ -11,14 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
 
+    // Check if the current page is already index.html to prevent infinite redirect loop
+    const isIndexPage = window.location.pathname.endsWith('index.html');
+
     if (!slug) {
-        window.location.href = 'index.html';
+        if (!isIndexPage) {
+            window.location.href = 'index.html';
+        }
         return;
     }
 
     const article = DataStore.getArticleBySlug(slug);
     if (!article) {
-        window.location.href = 'index.html';
+        if (!isIndexPage) {
+            window.location.href = 'index.html';
+        }
         return;
     }
 
