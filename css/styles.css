@@ -396,43 +396,43 @@ footer {
   .card-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .navbar {
     flex-direction: column;
     align-items: center;
     height: auto;
     padding: 1rem 0;
   }
-  
+
   .nav-links {
     margin-top: 1rem;
     align-items: center;
     display: flex;
     flex-direction: column;
   }
-  
+
   body {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
   }
-  
+
   .container {
     padding: 0 0.75rem;
   }
-  
+
   .card {
     padding: 1rem;
     margin-bottom: 1rem;
   }
-  
+
   .category-card, .article-card {
     padding: 1rem;
   }
-  
+
   .article-container {
     padding: 1rem;
   }
-  
+
   /* Better tap targets */
   .nav-links a,
   button,
@@ -445,34 +445,34 @@ footer {
     justify-content: center;
     margin: 5px 0; /* Add margin between links */
   }
-  
+
   /* Improve form experience on mobile */
   .form-input, 
   .form-textarea {
     padding: 0.75rem;
     font-size: 16px;
   }
-  
+
   /* Fix table display on small screens */
   .tickets-table {
     overflow-x: auto;
     display: block;
     width: 100%;
   }
-  
+
   /* Adjust header for mobile */
   h1 {
     font-size: 1.75rem;
   }
-  
+
   h2 {
     font-size: 1.5rem;
   }
-  
+
   h3 {
     font-size: 1.25rem;
   }
-  
+
   .back-button {
     width: 90%;
     text-align: center;
@@ -492,6 +492,22 @@ footer {
   #menu.active {
     display: flex;
   }
+
+  /* Mobile menu */
+  .mobile-menu-toggle {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    position: relative;
+  }
+
 }
 
 /* Add specific mobile landscape styles */
@@ -500,7 +516,7 @@ footer {
     max-height: 100vh;
     overflow-y: auto;
   }
-  
+
   .main-content {
     padding-bottom: 2rem;
   }
