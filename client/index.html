@@ -1,11 +1,23 @@
 <!DOCTYPE html>
+<script src="js/menu.js" defer></script>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   </head>
+  <header>
+    <div class="navbar">
+        <button id="menu-toggle" class="hamburger-menu">☰</button>
+        <nav id="menu" class="nav-links hidden">
+            <a href="index.html">Home</a>
+            <a href="category.html">Categories</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="js/menu.js" defer></script>
   </body>
 </html>

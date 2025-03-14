@@ -66,6 +66,12 @@ header {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+}
+
+.nav-links.active {
+  transform: translateY(0);
 }
 
 .nav-links a {
