@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category - Documentation Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Documentation Portal</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                  <!--  <a href="support.html">Support</a>
+                    <a href="admin/tickets.html">Admin</a> -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <button class="back-button" onclick="goBack()">Back</button>
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a> &gt; <span id="category-name">Category</span>
+        </div>
+        
+        <div id="category-header" class="content-header">
+            <h1>Category Name</h1>
+            <p id="category-description">Category description will appear here.</p>
+        </div>
+        
+        <div id="articles-container" class="card-grid">
+            <!-- Articles will be loaded here dynamically -->
+            <div class="loading">Loading articles...</div>
+        </div>
+    </main>
+
+    
+
+    <script src="js/data.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html>

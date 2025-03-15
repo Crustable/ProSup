@@ -1,0 +1,42 @@
+/* Hamburger menu button */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Navigation menu */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--card-bg);
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
