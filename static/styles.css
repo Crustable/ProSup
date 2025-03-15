@@ -9,6 +9,8 @@
   --color-muted: #9ca3af;
   --color-border: #3b82f6;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --spacing: 1rem;
+
 }
 
 /* Reset */
@@ -336,5 +338,51 @@ a:hover {
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: block;
+  }
+}
+
+/* ...existing styles... */
+
+/* Media query for mobile devices in portrait mode */
+@media only screen and (max-width: 768px) {
+  body {
+      font-size: 16px; /* Adjust font size for readability */
+  }
+
+  .container {
+      padding: 10px; /* Adjust padding for mobile devices */
+      margin: 0 auto; /* Center the container */
+      max-width: 100%; /* Ensure container doesn't exceed screen width */
+      width: 100%; /* Ensure container takes full width */
+
+      /* Use Grid Layout for better flexibility */
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+  }
+
+  .navbar {
+      flex-direction: column; /* Stack navbar items vertically */
+      align-items: center;
+  }
+
+  .nav-links {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+  }
+
+  .nav-links a {
+      margin: 5px 0; /* Add margin between links */
+  }
+
+  .content-header {
+      text-align: center; /* Center align text */
+  }
+
+  .card-grid {
+      grid-template-columns: 1fr; /* Single column layout for cards */
   }
 }
